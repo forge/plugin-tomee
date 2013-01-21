@@ -1,7 +1,5 @@
-package org.apache.openejb.forge.plugins;
+package org.jboss.forge.tomee;
 
-import javax.enterprise.event.Event;
-import javax.inject.Inject;
 import org.jboss.forge.project.facets.events.InstallFacets;
 import org.jboss.forge.project.facets.events.RemoveFacets;
 import org.jboss.forge.shell.Shell;
@@ -11,8 +9,11 @@ import org.jboss.forge.shell.plugins.Help;
 import org.jboss.forge.shell.plugins.Plugin;
 import org.jboss.forge.shell.plugins.SetupCommand;
 
+import javax.enterprise.event.Event;
+import javax.inject.Inject;
+
 @Alias("tomee")
-@Help("A plugin helping with the tomee-maven-plugin usage")
+@Help("A plugin for tomee-maven-plugin usage")
 public class TomEEPlugin implements Plugin {
     @Inject
     private Shell shell;
