@@ -51,7 +51,7 @@ public class TomEEFacet extends BaseFacet {
             httpPortConfig.setText(httpPort);
             config.addConfigurationElement(httpPortConfig);
         }
-        if (isMoreThan(dependency, 1, 5, 2)) {
+        if (isMoreThan(dependency.getVersion(), 1, 5, 1)) {
             final ConfigurationElementImpl simpleLog = new ConfigurationElementImpl();
             simpleLog.setName("simpleLog");
             simpleLog.setText("true");
@@ -78,9 +78,9 @@ public class TomEEFacet extends BaseFacet {
         return DependencyBuilder.create().setGroupId(GID).setArtifactId(AID);
     }
 
-    private static boolean isMoreThan(final Dependency version, final int major, final int minor, final int patch) {
+    private static boolean isMoreThan(final String version, final int major, final int minor, final int patch) {
         final Pattern pat = Pattern.compile("([0-9]*).([0-9]*).([0-9]*)(\\-SNAPSHOT)*");
-        final Matcher matcher = pat.matcher(version.getVersion());
+        final Matcher matcher = pat.matcher(version);
         return matcher.matches()
                 && (Integer.parseInt(matcher.group(1)) > major
                 || (Integer.parseInt(matcher.group(1)) == major && Integer.parseInt(matcher.group(2)) > minor)
